@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<title>CarPlay connection mark</title><defs>
+<linearGradient id="glass" x1="0" y1="0" x2=".7" y2="1"><stop stop-color="#34558b"/><stop offset=".48" stop-color="#203d75"/><stop offset="1" stop-color="#1d3263"/></linearGradient>
+<linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#9eb7e2" stop-opacity=".65"/><stop offset=".4" stop-color="#a4b6da" stop-opacity=".08"/><stop offset="1" stop-color="#879dd4" stop-opacity=".45"/></linearGradient>
+</defs><rect x="2" y="2" width="508" height="508" rx="124" fill="url(#glass)" stroke="url(#rim)" stroke-width="4"/>
+<path d="M374 138 A166 166 0 1 0 374 374" fill="none" stroke="#fff" stroke-width="39" stroke-linecap="round"/>
+<path d="M228 196 Q217 190 217 204 V308 Q217 322 230 314 L314 264 Q329 256 314 247Z" fill="#fff"/>
+</svg>
