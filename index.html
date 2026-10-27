@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0c121c">
+<meta name="referrer" content="no-referrer">
+<!-- CSP host sources cannot express IP ranges, so connect-src allows the driver's HTTP phone address. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http: https:; media-src 'self' http: https: blob:; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>CarPlay</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css?v=82">
+<link rel="stylesheet" href="reconnect.css?v=82">
+<link rel="stylesheet" href="airplay-controls.css">
+<link rel="stylesheet" href="airplay-trust.css">
+<link rel="stylesheet" href="vendor/videojs/skin.min.css">
+<script type="module" src="audio-diagnostic/http-player.js?v=84-perf3"></script>
+</head>
+<body>
+<main>
+<section id="panel" aria-labelledby="title">
+<div class="glass-sheet">
+<form id="link-form" novalidate>
+<div class="sheet-lead">
+<img class="brand-mark" src="icon.svg" alt="CarPlay" width="72" height="72">
+<h1 id="title" data-i18n="heading"></h1>
+<p class="intro" data-i18n="intro"></p>
+</div>
+<div class="sheet-entry">
+<div class="field">
+<label for="code" data-i18n="codeLabel"></label>
+<input id="code" name="code" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" autocomplete="off" required>
+</div>
+<div class="field">
+<label for="host" data-i18n="hostLabel"></label>
+<input id="host" name="host" inputmode="decimal" autocomplete="off" spellcheck="false">
+<p class="hint" data-i18n="hostHelp"></p>
+</div>
+<div class="sheet-actions">
+<button id="connect" class="primary" type="submit" data-i18n="connect"></button>
+<button id="disconnect" type="button" data-i18n="disconnect" hidden></button>
+</div>
+<p id="message" role="alert"></p>
+</div>
+</form>
+<div id="portal-controls">
+<p id="status" role="status" aria-live="polite"></p>
+<button id="stats-toggle" type="button" role="switch" aria-checked="false">
+<span data-i18n="stats"></span>
+<span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
+</button>
+<nav>
+<button id="fit" class="primary" type="button" data-i18n="fit" hidden></button>
+</nav>
+</div>
+<p class="hint window-help" data-i18n="resizeHelp"></p>
+<footer><a id="page-version" href="https://github.com/uJZk/TiPlay/releases"></a></footer>
+</div>
+</section>
+<section id="stage" hidden>
+<time id="pane-date" hidden></time>
+<div id="surface">
+<canvas id="screen"></canvas>
+<div id="touch" aria-hidden="true"></div>
+</div>
+</section>
+</main>
+<!-- The monitor is outside the negotiated video surface and never consumes its layout space. -->
+<output id="stats" aria-label="Performance monitor: codec, current FPS, current Delta, dropped frames" hidden></output>
+<section id="reconnect" aria-label="CarPlay" hidden>
+<img id="reconnect-wallpaper" src="reconnect-wallpaper-blurred.png" alt="" referrerpolicy="no-referrer">
+<img id="reconnect-logo" src="icon.svg" alt="CarPlay" width="128" height="128">
+<img id="reconnect-wordmark" src="carplay-wordmark.svg" alt="CarPlay" width="204" height="52">
+<p id="reconnect-message" role="status" aria-live="polite" aria-atomic="true"></p>
+<button id="reconnect-settings" type="button" data-i18n="settings"></button>
+</section>
+
+<div class="notification-stack">
+<aside class="tiplay-notification" id="browser-notice" role="alertdialog" aria-labelledby="browser-notice-heading" aria-describedby="browser-notice-message" hidden>
+<div class="airplay-trust-header"><img src="icon.svg" alt="" width="38" height="38"><strong id="browser-notice-heading" data-browser-heading></strong></div>
+<p id="browser-notice-message" class="notification-message" data-browser-message></p>
+<div class="airplay-trust-actions"><button type="button" data-browser-close></button></div>
+</aside>
+<aside class="tiplay-notification" id="airplay-trust" role="alertdialog" aria-labelledby="airplay-trust-heading" aria-describedby="airplay-trust-name" hidden>
+<div class="airplay-trust-header"><img src="icon.svg" alt="" width="38" height="38"><strong id="airplay-trust-heading" data-trust-heading></strong></div>
+<p id="airplay-trust-name" data-trust-name></p>
+<div class="airplay-trust-actions"><button type="button" data-trust-reject></button><button type="button" data-trust-allow></button></div>
+</aside>
+<aside class="tiplay-notification" id="location-notice" role="alertdialog" aria-labelledby="location-notice-heading" aria-describedby="location-notice-message" hidden>
+<div class="airplay-trust-header"><img src="icon.svg" alt="" width="38" height="38"><strong id="location-notice-heading" data-location-heading></strong></div>
+<p id="location-notice-message" class="notification-message" data-location-message></p>
+<div class="airplay-trust-actions"><button type="button" data-location-close></button></div>
+</aside>
+</div>
+<noscript>CarPlay needs JavaScript. · CarPlay 需要 JavaScript。</noscript>
+</body>
+</html>
